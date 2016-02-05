@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+        >
+       <bean id = "tape" class="com.ukma.java_ee.players.TapeRedorder">
+              <constructor-arg ref="the_doors"/>
+       </bean>
+       <bean id = "portable_tape" class="com.ukma.java_ee.players.PortableTape">
+             <constructor-arg ref="the_beatles"/>
+       </bean>
+
+       <bean id = "boombox" class="com.ukma.java_ee.players.Boombox">
+           <constructor-arg>
+               <list>
+                   <ref bean="queen"/>
+                   <ref bean="the_beatles"/>
+                   <ref bean="the_doors"/>
+               </list>
+           </constructor-arg>
+       </bean>
+
+       <bean id = "queen" class="com.ukma.java_ee.records.Queen"
+           p:record = "Show must go on..." scope="prototype"/>
+
+       <bean id="the_beatles" class="com.ukma.java_ee.records.TheBeatles" scope="prototype"
+             p:record = "We all live in a yellow submarine, yellow submarine, yellow submarine..."/>
+
+       <bean id="the_doors" class="com.ukma.java_ee.records.TheDoors" scope="prototype"
+             p:record="Riders on the storm..."/>
+</beans>
